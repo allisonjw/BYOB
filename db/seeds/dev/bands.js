@@ -1,13 +1,22 @@
+const bandsData = require('../../../data/bandsData');
 
-exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
+const createBand = (knex, band) => {
+  return knex('bands').insert({
+    band: band.band,
+    highest_song: band.highest_song,
+    featuring_artist: band.featuring_artist,
+    highest_song_vid: band.highest_song_vid,
+  }, 'id')
+};
+
+exports.seed = (knex) => {
+  return knex('bands').del()
+  .then(() => {
+    let bandsPromises = [];
+    bandsData.forEach(band => {
+      bandsPromises.push(createBand(knex, band))
     });
+    return Promise.all(bandsPromises);
+  })
+  .catch(error => console.error(`Error seeding data ${error}`));
 };
