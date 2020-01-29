@@ -49,3 +49,7 @@ app.get('/api/v1/bands/:id', (request, response) => {
     });
   })
 });
+
+app.listen(app.get('port'), () => {
+  console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
+});
