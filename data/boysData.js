@@ -2022,7 +2022,7 @@ const boysData = [
         },
         {
         band: "Youngstown",
-        name: "James Lee Dallas,
+        name: "James Lee Dallas",
         dob: "2/7/1975",
         hair_color: "black",
         hair_frosted: "no",
@@ -2309,7 +2309,7 @@ const boysData = [
         },
         {
         band: "U.N.V.",
-        name: "John "JC" Clay",
+        name: "John JC Clay",
         hair_color: "black",
         hair_frosted: "no",
         hair_length: "short",
@@ -2376,7 +2376,7 @@ const boysData = [
         },
         {
         band: "Backstreet Boys",
-        name: ""AJ" McLean",
+        name: "AJ McLean",
         dob: "1/9/1978",
         hair_color: "brown",
         hair_frosted: "no",
@@ -2464,7 +2464,7 @@ const boysData = [
         },
         {
         band: "BBMak",
-        name: "Stephen "Ste" McNally",
+        name: "Stephen Ste McNally",
         dob: "7/4/1978",
         hair_color: "brown",
         hair_frosted: "no",
@@ -2482,7 +2482,7 @@ const boysData = [
         },
         {
         band: "SILK",
-        name: "Gary "Big G" Glenn",
+        name: "Gary Big G Glenn",
         hair_color: "black",
         hair_frosted: "no",
         hair_length: "short",
@@ -2498,7 +2498,7 @@ const boysData = [
         },
         {
         band: "SILK",
-        name: "Gary "Lil G" Jenkins",
+        name: "Gary Lil G Jenkins",
         hair_color: "black",
         hair_frosted: "no",
         hair_length: "short",
@@ -2513,7 +2513,7 @@ const boysData = [
         },
         {
         band: "SILK",
-        name: "James "Jimmy" Gates, Jr.",
+        name: "James Jimmy Gates, Jr.",
         hair_color: "black",
         hair_frosted: "no",
         hair_length: "short",
@@ -2701,7 +2701,7 @@ const boysData = [
         },
         {
         band: "Soul for Real",
-        name: ""Jase4Real" Oliver Dalyrimple",
+        name: "Jase4Real Oliver Dalyrimple",
         dob: "5/10/1980",
         hair_color: "black",
         hair_frosted: "no",
@@ -2718,7 +2718,7 @@ const boysData = [
         },
         {
         band: 112,
-        name: "Marvin "Slim" Scandrick",
+        name: "Marvin Slim Scandrick",
         dob: "1/21/1981",
         hair_color: "black",
         hair_frosted: "no",
@@ -2821,7 +2821,7 @@ const boysData = [
         },
         {
         band: 112,
-        name: "Quinnes "Q" Parker",
+        name: "Quinnes Q Parker",
         dob: "3/24/1977",
         hair_color: "black",
         hair_frosted: "no",
@@ -3025,7 +3025,7 @@ const boysData = [
         },
         {
         band: "Playa",
-        name: "Benjamin "Black" Bush",
+        name: "Benjamin Black Bush",
         hair_color: "black",
         hair_frosted: "no",
         hair_length: "short",
@@ -3122,7 +3122,7 @@ const boysData = [
         },
         {
         band: "Blackstreet",
-        name: ""Black" Hannibal",
+        name: "Black Hannibal",
         dob: "11/24/1968",
         hair_color: "black",
         hair_frosted: "no",
@@ -3187,7 +3187,7 @@ const boysData = [
         },
         {
         band: "Hi-Five",
-        name: "Roderick "Pooh" Clark",
+        name: "Roderick Pooh Clark",
         hair_color: "black",
         hair_frosted: "no",
         hair_length: "short",
@@ -3464,7 +3464,7 @@ const boysData = [
         },
         {
         band: "Musical Youth",
-        name: "Frederick "Junior" Waite",
+        name: "Frederick Junior Waite",
         dob: "5/23/1967",
         hair_color: "black",
         hair_frosted: "no",
