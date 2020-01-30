@@ -21,7 +21,7 @@ app.get('/api/v1/bands', (request, response) => {
     })
     .catch((error) => {
       response.status(500).json({
-        error: 'There were problems connecting to the database.'
+        error: 'Sorry there were was a problem connecting to the database.'
       });
     })
 });
@@ -33,7 +33,7 @@ app.get('/api/v1/members', (request, response) => {
     })
     .catch((error) => {
       response.status(500).json({
-        error: 'There were problems connecting to the database.'
+        error: 'Sorry there were was a problem connecting to the database.'
       });
     })
 });
@@ -46,13 +46,32 @@ app.get('/api/v1/bands/:id', (request, response) => {
       if (band.length === 0) {
         response
           .status(404)
-          .json({ error: `There is not a boy band with an id of ${id}!` });
+          .json({ error: `Sorry there is not a band with an id of ${id}! Please try again.` });
       }
       response.status(200).json(band[0]);
     })
     .catch((error) => {
       response.status(500).json({
-        error: 'There were problems connecting to the database.'
+        error: 'Sorry there were was a problem connecting to the database.'
+    });
+  })
+});
+
+app.get('/api/v1/members/:id', (request, response) => {
+  const { id } = request.params;
+  database('members')
+    .where({ id: id })
+    .then(band => {
+      if (band.length === 0) {
+        response
+          .status(404)
+          .json({ error: `Sorry there is not a member in the band with an id of ${id}! Please try again.` });
+      }
+      response.status(200).json(band[0]);
+    })
+    .catch((error) => {
+      response.status(500).json({
+        error: 'Sorry there were was a problem connecting to the database.'
     });
   })
 });
