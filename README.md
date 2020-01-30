@@ -24,7 +24,7 @@
       <td><code class="language-plaintext highlighter-rouge">/api/v1/bands</code></td>
       <td>GET</td>
       <td>N/A</td>
-      <td><code class="language-plaintext highlighter-rouge"> {
+      <td><code class="language-plaintext highlighter-rouge"> [{
         "id": 1122,
         "band": "Backstreet Boys",
         "highest_song": "Quit Playing Games with my Heart",
@@ -43,7 +43,7 @@
         "created_at": "2020-01-30T21:28:16.641Z",
         "updated_at": "2020-01-30T21:28:16.641Z",
         "band_id": null
-    }, ...]}</code></td>
+    }, {}, {}, {}]</code></td>
     </tr>
     <tr>
       <td>Get band by id: </td>
@@ -102,7 +102,7 @@
       <th>URL</th>
       <th>Verb</th>
       <th>Request Body</th>
-      <th>Sample Response (Happy Path)</th>
+      <th>Sample of Success Response (Happy Path)</th>
     </tr>
   </thead>
   <tbody>
@@ -111,7 +111,7 @@
       <td><code class="language-plaintext highlighter-rouge">/api/v1/members</code></td>
       <td>GET</td>
       <td>N/A</td>
-      <td><code class="language-plaintext highlighter-rouge"> {
+      <td><code class="language-plaintext highlighter-rouge"> [{
         "band": "Shai",
         "id": 1896,
         "name": "Carl Martin",
@@ -132,7 +132,7 @@
         "bandsId": null,
         "created_at": "2020-01-30T21:29:57.613Z",
         "updated_at": "2020-01-30T21:29:57.613Z"
-    }, ...]}</code></td>
+    }, {}, {}, {}]</code></td>
     </tr>
     <tr>
       <td>Get member by id: </td>
