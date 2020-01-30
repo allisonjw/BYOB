@@ -11,10 +11,10 @@ app.set('port', process.env.PORT || 3000);
 app.locals.title = 'BYOB';
 
 app.get('/', (request, response) => {
-  response.send('View Boy Bands and the Members');
+  response.send('View Bands and the Members');
 });
 
-// get, get by id and post bands
+// get, get by id, post and delete by id bands
 app.get('/api/v1/bands', (request, response) => {
     database('bands').select()
     .then((bands) => {
@@ -59,11 +59,28 @@ app.post('/api/v1/bands', async (request, response) => {
 
   database('bands').insert(newBand, 'id')
     .then(band => {
-      response.status(201).json(`Boy band with id of ${band[0]} successfully created!`)
+      response.status(201).json(`Band with id of ${band[0]} successfully created!`)
     })
     .catch(error => {
       response.status(500).json({ error })
   })
+});
+
+app.delete('/api/v1/bands/:id', (request, response) => {
+  const { id } = request.params;
+  database('bands')
+    .where({ id: id })
+    .select()
+    .del()
+    .then(results => {
+      if (results === 0) {
+        response.status(404).json(`Sorry there is no band with the id of ${id}`);
+      }
+      response.status(200).json(`Band with the id of ${id} successfully deleted.`);
+    })
+    .catch(error => {
+      response.status(404).json({ error });
+    });
 });
 
 // get, get by id and post members
