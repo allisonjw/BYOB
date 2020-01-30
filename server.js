@@ -99,6 +99,27 @@ app.get('/api/v1/members/:id', (request, response) => {
   })
 });
 
+app.post('/api/v1/members', async (request, response) => {
+  const newMember = request.body;
+
+  for (let requiredParameter of ['band', 'name', 'dob', 'hair_color', 'eyes']) {
+    if (!newMember[requiredParameter]) {
+      return response
+        .status(422)
+        .json({ error: `Expected format: { band: <String>, name: <String> , dob: <String>, hair_color: <String>, eyes: <String>}. You're missing a "${requiredParameter}" property.` });
+    }
+  }
+
+  database('members').insert(newMember, 'id')
+    .then(member => {
+      response.status(201).json(`Band member with id of ${member[0]} successfully created!`)
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+  })
+});
+
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
 });
