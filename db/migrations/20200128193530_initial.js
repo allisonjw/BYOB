@@ -2,8 +2,8 @@ exports.up = knex => {
     return Promise.all([
       knex.schema.createTable('bands', table => {
         table.increments('id').primary();
-        // table.string('band_id');
-        // table.unique('band_id');
+        table.string('band_id');
+        table.unique('band_id');
         table.string('band');
         table.integer('highest_pos');
         table.string('highest_pos_date');
