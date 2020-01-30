@@ -6,11 +6,11 @@ const createBand = (knex, band) => {
     highest_song: band.highest_song,
     featuring_artist: band.featuring_artist,
     highest_song_vid: band.highest_song_vid,
-  }, 'id')
+  }, 'band_id')
 };
 
 exports.seed = (knex) => {
-  return knex('bands').del()
+  return knex('members').del()
   .then(() => {
     let bandsPromises = [];
     bandsData.forEach(band => {

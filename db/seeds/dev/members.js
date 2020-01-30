@@ -1,9 +1,10 @@
+
 const membersData = require('../../../data/boysData');
 
 const createMember = (knex, member) => {
   return knex('members').insert({
     band: member.band,
-    bandsId: member.id,
+    // bands_Id: bandId[0],
     name: member.name,
     dob: member.dob,
     hair_color: member.hair_color,
