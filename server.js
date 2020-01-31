@@ -32,12 +32,9 @@ app.get('/api/v1/bands/:id', (request, response) => {
   database('bands')
     .where({ id: id })
     .then(band => {
-      if (band.length === 0) {
-        response
-          .status(404)
-          .json({ error: `Sorry there is not a band with an id of ${id}! Please try again.` });
-      }
-      response.status(200).json(band[0]);
+      band.length === 0 
+      ? response.status(404).json({ error: `Sorry there is not a band with an id of ${id}! Please try again.` }) 
+      : response.status(200).json(band[0]);
     })
     .catch((error) => {
       response.status(500).json({
@@ -73,10 +70,9 @@ app.delete('/api/v1/bands/:id', (request, response) => {
     .select()
     .del()
     .then(results => {
-      if (results === 0) {
-        response.status(404).json(`Sorry there is no band with the id of ${id}`);
-      }
-      response.status(200).json(`Band with the id of ${id} successfully deleted.`);
+      results === 0 
+      ? response.status(404).json(`Sorry there is no band with the id of ${id}`)
+      : response.status(200).json(`Band with the id of ${id} successfully deleted.`);
     })
     .catch(error => {
       response.status(404).json({ error });
@@ -102,12 +98,9 @@ app.get('/api/v1/members/:id', (request, response) => {
   database('members')
     .where({ id: id })
     .then(band => {
-      if (band.length === 0) {
-        response
-          .status(404)
-          .json({ error: `Sorry there is not a member in the band with an id of ${id}! Please try again.` });
-      }
-      response.status(200).json(band[0]);
+      band.length === 0 
+      ? response.status(404).json({ error: `Sorry there is not a member in the band with an id of ${id}! Please try again.` }) 
+      : response.status(200).json(band[0]);
     })
     .catch((error) => {
       response.status(500).json({
@@ -121,9 +114,7 @@ app.post('/api/v1/members', async (request, response) => {
 
   for (let requiredParameter of ['band', 'name', 'dob', 'hair_color', 'eyes']) {
     if (!newMember[requiredParameter]) {
-      return response
-        .status(422)
-        .json({ error: `Expected format: { band: <String>, name: <String> , dob: <String>, hair_color: <String>, eyes: <String>}. You're missing a "${requiredParameter}" property.` });
+      return response.status(422).json({ error: `Expected format: { band: <String>, name: <String> , dob: <String>, hair_color: <String>, eyes: <String>}. You're missing a "${requiredParameter}" property.` });
     }
   }
 
