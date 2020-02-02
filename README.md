@@ -186,6 +186,13 @@ This application was built using the following technologies:
         "updated_at": "2020-01-31T19:50:36.634Z"
     }</code></td>
     </tr>
+    <tr>
+      <td>Delete an existing member based on id</td>
+      <td><code class="language-plaintext highlighter-rouge">api/v1/members/:id/</code></td>
+      <td>DELETE</td>
+      <td>N/A</td>
+      <td>204 status code (NO CONTENT in response body)</td>
+    </tr>
   </tbody>
 </table>
 
