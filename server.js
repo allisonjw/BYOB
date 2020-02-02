@@ -1,13 +1,20 @@
+//imports express middleware
 const express = require('express');
+//require cors to share data with domains that are not the origin
 const cors = require('cors');
+//creates the app object
 const app = express();
+//sets the environment to process or development
 const environment = process.env.NODE_ENV || 'development';
+//Based on the environment, fetch the database configuration from knexfile.js
 const configuration = require('./knexfile')[environment];
+//defines the configuration of our database
 const database = require('knex')(configuration);
-
+// tells our app to use express middleware and parse into JSON
 app.use(express.json());
 app.use(cors());
 app.set('port', process.env.PORT || 3000);
+//creates a local storage object titled BYOB
 app.locals.title = 'BYOB';
 
 app.get('/', (request, response) => {
