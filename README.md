@@ -12,6 +12,8 @@ Build Your Own Backend is a one week long solo project. My database was created 
 
 ## [Heroku Deployment](https://boy-bands-and-members.herokuapp.com/)
 
+---
+
 ### Tech
 
 This application was built using the following technologies:
