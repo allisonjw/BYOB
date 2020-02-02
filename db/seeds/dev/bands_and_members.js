@@ -20,7 +20,6 @@ const createBand = (knex, band) => {
             band_name: bandName[0],
             dob: member.dob,
             hair_color: member.hair_color,
-            hair_color: member.hair_color,
             eyes: member.eyes,
           })
         )
