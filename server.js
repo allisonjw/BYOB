@@ -112,9 +112,9 @@ app.get('/api/v1/members/:id', (request, response) => {
 app.post('/api/v1/members', async (request, response) => {
   const newMember = request.body;
 
-  for (let requiredParameter of ['band', 'name', 'dob', 'hair_color', 'eyes']) {
+  for (let requiredParameter of ['band_name', 'name', 'dob', 'hair_color', 'eyes']) {
     if (!newMember[requiredParameter]) {
-      return response.status(422).json({ error: `Expected format: { band: <String>, name: <String> , dob: <String>, hair_color: <String>, eyes: <String>}. You're missing a "${requiredParameter}" property.` });
+      return response.status(422).json({ error: `Expected format: { band_name: <String>, name: <String> , dob: <String>, hair_color: <String>, eyes: <String>}. You're missing a "${requiredParameter}" property.` });
     }
   }
 
@@ -127,6 +127,21 @@ app.post('/api/v1/members', async (request, response) => {
   })
 });
 
+app.delete('/api/v1/members/:id', (request, response) => {
+  const { id } = request.params;
+  database('members')
+    .where({ id: id })
+    .select()
+    .del()
+    .then(results => {
+      results === 0 
+      ? response.status(404).json(`Sorry there is no member with the id of ${id}`)
+      : response.status(200).json(`Member with the id of ${id} successfully deleted.`);
+    })
+    .catch(error => {
+      response.status(404).json({ error });
+    });
+});
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
