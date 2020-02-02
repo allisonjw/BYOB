@@ -1,40 +1,50 @@
-//imports express middleware
+// imports express middleware
 const express = require('express');
-//require cors to share data with domains that are not the origin
+// require cors to share data with domains that are not the origin
 const cors = require('cors');
-//creates the app object
+// creates the app object
 const app = express();
-//sets the environment to process or development
+// sets the environment to process or development
 const environment = process.env.NODE_ENV || 'development';
-//Based on the environment, fetch the database configuration from knexfile.js
+// based on the environment, fetch the database configuration from knexfile.js
 const configuration = require('./knexfile')[environment];
-//defines the configuration of our database
+// defines the configuration of our database
 const database = require('knex')(configuration);
+
 // tells our app to use express middleware and parse into JSON
 app.use(express.json());
+// tell our app to use the cors policy
 app.use(cors());
+// tells our app to set the port to heroku or the localhost 3000
 app.set('port', process.env.PORT || 3000);
-//creates a local storage object titled BYOB
+// creates a local storage object titled BYOB
 app.locals.title = 'BYOB';
 
+// 
 app.get('/', (request, response) => {
   response.send('View Bands and the Members');
 });
 
-// get, get by id, post and delete by id bands
+// creates a get endpoint for '/api/v1/bands'
 app.get('/api/v1/bands', (request, response) => {
+    // selects the bands file from the database
     database('bands').select()
+    // then once we get the data.....
     .then((bands) => {
+      // send the response status 200 back with a json object of bands
       response.status(200).json(bands);
     })
     .catch((error) => {
+      // if there is no data send back the response status 500 with the error line message
       response.status(500).json({
         error: 'Sorry there were was a problem connecting to the database.'
       });
     })
 });
 
+// creates a get endpoint for '/api/v1/bands/:id' based on the id
 app.get('/api/v1/bands/:id', (request, response) => {
+      // selects the members file from the database
   const { id } = request.params;
   database('bands')
     .where({ id: id })
@@ -50,9 +60,11 @@ app.get('/api/v1/bands/:id', (request, response) => {
   })
 });
 
+// set a POST endpoint to '/api/v1/bands'
 app.post('/api/v1/bands', async (request, response) => {
+  // sets a variable named newBand to the request.body
   const newBand = request.body;
-
+// 
   for (let requiredParameter of ['band', 'highest_song', 'featuring_artist', 'highest_song_vid']) {
     if (!newBand[requiredParameter]) {
       return response
@@ -70,6 +82,7 @@ app.post('/api/v1/bands', async (request, response) => {
   })
 });
 
+// creates a DELETE
 app.delete('/api/v1/bands/:id', (request, response) => {
   const { id } = request.params;
   database('bands')
@@ -86,20 +99,23 @@ app.delete('/api/v1/bands/:id', (request, response) => {
     });
 });
 
-// get, get by id and post members
-
+// creates a GET endpoint to '/api/v1/members'
 app.get('/api/v1/members', (request, response) => {
   database('members').select()
+  // then once we get the data.....
   .then((members) => {
+    // send the response status 200 back with a json object of members
     response.status(200).json(members);
   })
   .catch((error) => {
+    // if there is no data send back the response status 500 with the error line message
     response.status(500).json({
       error: 'Sorry there were was a problem connecting to the database.'
     });
   })
 });
 
+// creates a get endpoint for '/api/v1/members/:id' based on the id
 app.get('/api/v1/members/:id', (request, response) => {
   const { id } = request.params;
   database('members')
