@@ -39,8 +39,8 @@ app.get('/api/v1/bands/:id', (request, response) => {
     .catch((error) => {
       response.status(500).json({
         error: 'Sorry there were was a problem connecting to the database.'
-    });
-  })
+      });
+    })
 });
 
 app.post('/api/v1/bands', async (request, response) => {
@@ -60,7 +60,7 @@ app.post('/api/v1/bands', async (request, response) => {
     })
     .catch(error => {
       response.status(500).json({ error })
-  })
+    });
 });
 
 app.delete('/api/v1/bands/:id', (request, response) => {
@@ -74,8 +74,10 @@ app.delete('/api/v1/bands/:id', (request, response) => {
       ? response.status(404).json(`Sorry there is no band with the id of ${id}`)
       : response.status(200).json(`Band with the id of ${id} successfully deleted.`);
     })
-    .catch(error => {
-      response.status(404).json({ error });
+    .catch((error) => {
+      response.status(500).json({
+        error: 'Sorry there were was a problem connecting to the database.'
+      });
     });
 });
 
@@ -105,8 +107,8 @@ app.get('/api/v1/members/:id', (request, response) => {
     .catch((error) => {
       response.status(500).json({
         error: 'Sorry there were was a problem connecting to the database.'
-    });
-  })
+      });
+    })
 });
 
 app.post('/api/v1/members', async (request, response) => {
@@ -124,7 +126,7 @@ app.post('/api/v1/members', async (request, response) => {
     })
     .catch(error => {
       response.status(500).json({ error })
-  })
+    })
 });
 
 app.delete('/api/v1/members/:id', (request, response) => {
@@ -138,9 +140,11 @@ app.delete('/api/v1/members/:id', (request, response) => {
       ? response.status(404).json(`Sorry there is no member with the id of ${id}`)
       : response.status(200).json(`Member with the id of ${id} successfully deleted.`);
     })
-    .catch(error => {
-      response.status(404).json({ error });
-    });
+    .catch((error) => {
+      response.status(500).json({
+        error: 'Sorry there were was a problem connecting to the database.'
+      });
+    })
 });
 
 app.listen(app.get('port'), () => {
