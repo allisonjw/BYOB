@@ -22,16 +22,16 @@ const createBand = (knex, band) => {
             hair_color: member.hair_color,
             eyes: member.eyes,
           })
-        )
+        );
       });
 
     return Promise.all(membersPromises)
-  })
-}
+  });
+};
 
 const createMember = (knex, member) => {
   return knex('members').insert(member)
-}
+};
 
 exports.seed = function(knex) {
   return knex('members').del()
