@@ -24,7 +24,7 @@ app.get('/api/v1/bands', (request, response) => {
       response.status(500).json({
         error: 'Sorry there were was a problem connecting to the database.'
       });
-    })
+    });
 });
 
 app.get('/api/v1/bands/:id', (request, response) => {
@@ -40,7 +40,7 @@ app.get('/api/v1/bands/:id', (request, response) => {
       response.status(500).json({
         error: 'Sorry there were was a problem connecting to the database.'
       });
-    })
+    });
 });
 
 app.post('/api/v1/bands', async (request, response) => {
@@ -92,7 +92,7 @@ app.get('/api/v1/members', (request, response) => {
     response.status(500).json({
       error: 'Sorry there were was a problem connecting to the database.'
     });
-  })
+  });
 });
 
 app.get('/api/v1/members/:id', (request, response) => {
@@ -108,7 +108,7 @@ app.get('/api/v1/members/:id', (request, response) => {
       response.status(500).json({
         error: 'Sorry there were was a problem connecting to the database.'
       });
-    })
+    });
 });
 
 app.post('/api/v1/members', async (request, response) => {
@@ -126,7 +126,7 @@ app.post('/api/v1/members', async (request, response) => {
     })
     .catch(error => {
       response.status(500).json({ error })
-    })
+    });
 });
 
 app.delete('/api/v1/members/:id', (request, response) => {
@@ -144,7 +144,7 @@ app.delete('/api/v1/members/:id', (request, response) => {
       response.status(500).json({
         error: 'Sorry there were was a problem connecting to the database.'
       });
-    })
+    });
 });
 
 app.listen(app.get('port'), () => {
