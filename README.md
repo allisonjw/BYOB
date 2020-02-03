@@ -6,7 +6,7 @@ Build Your Own Backend is a one week long solo project. My database was created 
 
 ---
 
-## [Spring Prjoect Board](https://github.com/allisonjw/BYOB/projects/1)
+## [Sprint Project Board](https://github.com/allisonjw/BYOB/projects/1)
 
 ---
 
